@@ -11,16 +11,16 @@
     border-radius: 3%;
     width: 400px;
     height: fit-content;
+    flex-wrap: nowrap;
+   
+    
 }
 
 footer{
     margin-bottom: 30px;
 
 }
-@keyframes spinning {
-    from { transform: rotate(0deg) }
-    to { transform: rotate(360deg) }
-  }
+
 
 .logo{
 color: rgb(70, 70, 247);
@@ -28,16 +28,30 @@ animation: spin 1s linear infinite;
 
 
 }
-@keyframes spin{
+#security-details{
+    max-width: 350px;
+}
+/* @keyframes spin{
     0% {transform: rotate(0deg);
     }
     100%{
         transform: rotate(360deg);
     }
-}
+} */
 #Layout-body{
     box-shadow: 0px 5px 5px 5px black;
 }
+.valid{
+    box-shadow: 0px 5px 5px 5px green;
+
+}
+
+.wrong{
+    box-shadow: 0px 5px 5px 5px rgb(128, 0, 9)
+    
+
+}
+
 
 
 
