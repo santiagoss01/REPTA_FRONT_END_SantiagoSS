@@ -7,14 +7,27 @@ const Mypaymentlayout = () => {
     const [numericInput, setNumericinput] = React.useState("");
 
     let validation = () => {
+
+
         if (numericInput === ("")) {
             return false;
         }
-        else if (typeof (numericInput) === "number" || numericInput.length === 16) {
-            return "valid";
+        else if (typeof (numericInput) === "string" && numericInput.length === 16) {
+            numericInput.slice(0,numericInput.length)
+            return "valid"
         }
         else return "wrong";
     };
+    
+    const rightTick = () => {
+        if (numericInput.length === 16) {
+            return <svg className='tick' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
+                <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z" />
+            </svg>
+        }
+    };
+
+
 
 
     return (<div id='main-container' className='container-fluid d-flex justify-content-center'>
@@ -45,8 +58,8 @@ const Mypaymentlayout = () => {
                                     <div class="form-group"> <label for="cardNumber">
                                         <h6>Card number</h6>
                                     </label>
-                                        <div class= {"input-group " + validation()}> <input type="text" onChange={e => setNumericinput(e.target.value)} value={numericInput} name="cardNumber" placeholder="Valid card number" class="form-control " required />
-                                            <span className="input-group-text text-muted "> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span>
+                                        <div class={"input-group " + validation()}> <input type="number"  onChange={e => setNumericinput(e.target.value)} value={numericInput} name="cardNumber" placeholder="Valid card number" class="form-control " required />
+                                            <span className="input-group-text text-muted "> {rightTick()} <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span>
                                         </div>
                                     </div>
                                     <div class="row d-flex" id='security-details'>
@@ -54,13 +67,13 @@ const Mypaymentlayout = () => {
                                             <div class="form-group"> <label><span class="hidden-xs">
                                                 <h6>Expiration Date</h6>
                                             </span></label>
-                                                <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control" required /> <input type="number" placeholder="YY" name="" class="form-control" required /> </div>
+                                                <div class="input-group"> <input type="number" max={"12"} placeholder="MM" name="" class="form-control" required /> <input type="number" placeholder="YY" name="" class="form-control" required /> </div>
                                             </div>
                                         </div>
                                         <div class="col align-self-end" id='ccv' >
                                             <div class="form-group mb-4"> <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
-                                                <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
-                                            </label> <input type="text" required class="form-control hidden-xs" /> </div>
+                                                <h6>CVV <i onClick={e=>{e=alert("This is the 3 digit number in the back of your card")}} class="fa fa-question-circle d-inline"> </i></h6>
+                                            </label> <input type="text" maxLength={"3"} required class="form-control hidden-xs" /> </div>
                                         </div>
                                     </div>
                                     <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button></div>

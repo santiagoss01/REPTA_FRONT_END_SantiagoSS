@@ -1,7 +1,7 @@
 
 #main-container{
     
-     height:fit-content;
+     height: 100vh;
      background-color: blueviolet;
    
 }
@@ -51,7 +51,9 @@ animation: spin 1s linear infinite;
     
 
 }
-
+.tick{
+    color: green;
+}
 
 
 
