@@ -6,14 +6,14 @@ const Mypaymentlayout = () => {
 
     const [numericInput, setNumericinput] = React.useState("");
 
+
     let validation = () => {
 
 
         if (numericInput === ("")) {
             return false;
         }
-        else if (typeof (numericInput) === "string" && numericInput.length === 16) {
-            numericInput.slice(0,numericInput.length)
+        else if ( numericInput.length === 16) {
             return "valid"
         }
         else return "wrong";
@@ -26,6 +26,10 @@ const Mypaymentlayout = () => {
             </svg>
         }
     };
+   
+   
+
+
 
 
 
