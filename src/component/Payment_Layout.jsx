@@ -14,17 +14,24 @@ const Mypaymentlayout = () => {
         if (numericInput === ("")) {
             return false;
         }
-        else if ( numericInput.length === 16) {
+        else if ( numericInput.split("").join("").length === 19) {
             return "valid"
         }
         else return "wrong";
     };
 
+    const newFormat =(numericInput)=>{
+        
+
+       setNumericinput( numericInput.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim());
+
+    }
+
     
     
     
     const rightTick = () => {
-        if (numericInput.length === 16) {
+        if (numericInput.length === 19) {
             return <svg className='tick' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16">
                 <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z" />
             </svg>
@@ -65,7 +72,7 @@ const Mypaymentlayout = () => {
                                     <div className="form-group"> <label for="cardNumber">
                                         <h6>Card number</h6>
                                     </label>
-                                        <div class={"input-group " + validation()}> <input type="number"  onChange={e => setNumericinput(e.target.value)}  value={numericInput} name="cardNumber" placeholder="Valid card number" class="form-control " required />
+                                        <div class={"input-group " + validation()}> <input type="tel"  onChange={e => setNumericinput(e.target.value)}  value={numericInput} onKeyDown={e=>newFormat(numericInput)} name="cardNumber" placeholder="Valid card number" class="form-control " required />
                                             <span className="input-group-text text-muted "> {rightTick()} <i className="fab fa-cc-visa mx-1"></i> <i className="fab fa-cc-mastercard mx-1"></i> <i className="fab fa-cc-amex mx-1"></i> </span>
                                         </div>
                                     </div>
