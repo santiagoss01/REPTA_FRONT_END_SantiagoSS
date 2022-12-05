@@ -5,6 +5,7 @@ import './Layout.css';
 const Mypaymentlayout = () => {
 
     const [numericInput, setNumericinput] = React.useState("");
+    
 
 
     let validation = () => {
@@ -18,6 +19,9 @@ const Mypaymentlayout = () => {
         }
         else return "wrong";
     };
+
+    
+    
     
     const rightTick = () => {
         if (numericInput.length === 16) {
@@ -26,8 +30,7 @@ const Mypaymentlayout = () => {
             </svg>
         }
     };
-   
-   
+
 
 
 
@@ -62,7 +65,7 @@ const Mypaymentlayout = () => {
                                     <div className="form-group"> <label for="cardNumber">
                                         <h6>Card number</h6>
                                     </label>
-                                        <div class={"input-group " + validation()}> <input type="number"  onChange={e => setNumericinput(e.target.value)} value={numericInput} name="cardNumber" placeholder="Valid card number" class="form-control " required />
+                                        <div class={"input-group " + validation()}> <input type="number"  onChange={e => setNumericinput(e.target.value)}  value={numericInput} name="cardNumber" placeholder="Valid card number" class="form-control " required />
                                             <span className="input-group-text text-muted "> {rightTick()} <i className="fab fa-cc-visa mx-1"></i> <i className="fab fa-cc-mastercard mx-1"></i> <i className="fab fa-cc-amex mx-1"></i> </span>
                                         </div>
                                     </div>
@@ -71,7 +74,7 @@ const Mypaymentlayout = () => {
                                             <div className="form-group"> <label><span className="hidden-xs">
                                                 <h6>Expiration Date</h6>
                                             </span></label>
-                                                <div className="input-group"> <input type="number" max={"12"} placeholder="MM" name="" className="form-control" required /> <input type="number" placeholder="YY" name="" className="form-control" required /> </div>
+                                                <div className="input-group"> <input type="number" min= {"0"}max={"12"} placeholder="MM" name="" className="form-control" required /> <input type="number" placeholder="YY" min={"0"} name="" className="form-control" required /> </div>
                                             </div>
                                         </div>
                                         <div className="col align-self-end" id='ccv' >
