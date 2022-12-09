@@ -1,10 +1,20 @@
 import React from 'react';
+import { useState } from 'react';
 import './Layout.css';
 
 
 const Mypaymentlayout = () => {
 
+
     const [numericInput, setNumericinput] = React.useState("");
+    const [ccvValue, setCcVvalue ]=React.useState("");
+    const [monthValue, setMonthvalue ]=React.useState("");
+    const [yearValue, setYearvalue ]=React.useState("");
+    const [userNamevalue, setUsernamevalue ]=React.useState("");
+ 
+
+
+ 
 
 
     // functionality to test for validity of the number:
@@ -41,6 +51,34 @@ const Mypaymentlayout = () => {
         }
     };
 
+     // this function is made to validate that every input of the layout is not set to an empty string.
+
+    
+
+     const inputValid = (e) =>{  
+        
+       
+            
+            if ( numericInput == ""||ccvValue==""||monthValue==""||yearValue==""||userNamevalue==""||numericInput.length !== 19) {
+             return alert("All fields must be properly filled");}
+
+             else return alert("¡¡¡Checkout succes!!!! Refesh the page and start again :)");
+             
+ 
+            };
+
+            
+    
+
+
+
+         
+            
+
+              
+            
+
+
 
 
 
@@ -68,10 +106,10 @@ const Mypaymentlayout = () => {
                         <div class="tab-content">
 
                             <div id="credit-card" className="tab-pane fade show active pt-3">
-                                <form role="form" >
+                                <form role="form" name="myForm" >
                                     <div className="form-group"> <label for="username">
                                         <h6>Card Owner</h6>
-                                    </label> <input type="text" name="username" placeholder="Card Owner Name" required class="form-control " /> </div>
+                                    </label> <input type="text" name="username" onChange={e => setUsernamevalue(e.target.value)} placeholder="Card Owner Name" required class="form-control " /> </div>
                                     <div className="form-group"> <label for="cardNumber">
                                         <h6>Card number</h6>
                                     </label>
@@ -84,21 +122,22 @@ const Mypaymentlayout = () => {
                                             <div className="form-group"> <label><span className="hidden-xs">
                                                 <h6>Expiration Date</h6>
                                             </span></label>
-                                                <div className="input-group"> <input type="number" min={"0"} max={"12"} placeholder="MM" name="" className="form-control" required /> <input type="number" placeholder="YY" min={"0"} name="" className="form-control" required /> </div>
+                                                <div className="input-group"> <input type="number" min={"0"} max={"12"} onChange={e => setMonthvalue(e.target.value)} placeholder="MM" name="month" className="form-control" required /> <input type="number" placeholder="YY" min={"0"} name="year" onChange={e => setYearvalue(e.target.value)} className="form-control" required /> </div>
                                             </div>
                                         </div>
                                         <div className="col align-self-end" id='ccv' >
                                             <div className="form-group mb-4"> <label data-toggle="tooltip" title="Three digit CV code on the back of your card">
                                                 <h6>CVV <i onClick={e => { e = alert("This is the 3 digit number in the back of your card") }} className="fa fa-question-circle d-inline"> </i></h6>
-                                            </label> <input type="text" maxLength={"3"} required className="form-control hidden-xs" /> </div>
+                                            </label> <input type="text" onChange={e => setCcVvalue(e.target.value)} name='ccv' maxLength={"3"} required className="form-control hidden-xs" /> </div>
                                         </div>
                                     </div>
-                                    <div className="card-footer"> <button type="button" className="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button></div>
+                                    <div className="card-footer"> <button type="button"  onClick={e => {inputValid(e)}} className="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button></div>
                                     <div classname="text-center p-4">
                                         © 2021 Copyright:
                                         <a className="text-reset" href="https://barcelonadigitaltalent.com/jump2digital-2022/">jump2digital-2022</a>
                                     </div>
                                 </form>
+                                
                             </div>
                         </div>
 

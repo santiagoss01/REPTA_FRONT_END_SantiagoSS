@@ -1,9 +1,6 @@
 
-#main-container{
-    
-     height: 100vh;
-     background-color:midnightblue;
-   
+body{
+    background-color: rgb(72, 72, 141);
 }
 
 .row{
