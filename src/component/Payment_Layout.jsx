@@ -58,15 +58,30 @@ const Mypaymentlayout = () => {
 
      const inputValid = (e) =>{  
         
-       
+       succesAlert();
             
             if ( numericInput == ""||ccvValue==""||monthValue==""||yearValue==""||userNamevalue==""||numericInput.length !== 19) {
              return alert("All fields must be properly filled");}
 
-             else return alert("¡¡¡Checkout succes!!!! Refesh the page and start again :)");
+             
+
+
+             else return window.location.reload(false);
+             
              
  
             };
+
+     /// This function shows the alert telling the user all fields are correctly fill.       
+
+    const succesAlert = ()=>{
+
+        if ( numericInput !== "" && ccvValue !=="" && monthValue !=="" && yearValue !=="" && userNamevalue !=="" && numericInput.length === 19) {
+            return alert("¡¡¡¡Succes!!!");}
+            else return false;
+
+    } ;       
+
 
             
     
